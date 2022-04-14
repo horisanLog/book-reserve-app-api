@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Sample API
+  description: >-
+    A sample API that uses a sample-site as an example to demonstrate features in
+    the OpenAPI 3.0 specification
+servers:
+  - url: 'http://localhost:8003'
+
+paths:
+  '/api/todos':
+    get:
+      tags:
+        - todo
+      summary: Todo自身の情報
+      description: todoの取得
+      responses:
+        '200':
+          description: todo response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TodoSchema'
+
+components:
+  schemas:
+    TodoSchema:
+      type: object
+      required:
+        - text
+      properties:
+        text:
+          type: string
+          example: "test"
